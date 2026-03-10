@@ -1,19 +1,40 @@
-import { 
-    View, 
+import {
+    StyleSheet,
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet,
-    
+    View,
 } from 'react-native';
+import {useState}  from 'react';
 
 export default function login(){
+    const [usuario, setUsuario] =useState(" ");
+    const [senha, setSenha] = useState(" ");
+    const validaLogin = () =>{
+        if(usuario == "admin"|| senha == "admin"){
+            alert("Login efetuado com sucesso")
+        }else{
+            alert("Usuario ou senha invalidos")
+
+        }
+        }
+    
     return(
         <View style={styles.Container}>
             <Text style={styles.title}>Trivert Rastreamento</Text>
-            <TextInput style={styles.input} />
-            <TextInput style={styles.input} />
-            <TouchableOpacity style={styles.button}>
+            <TextInput 
+                style={styles.input} 
+                value={usuario}
+                onChangeText={setUsuario}
+            />
+            <TextInput 
+                style={styles.input}
+                value={senha}
+                onChangeText={setSenha}
+                secureTextEntry
+                />
+            
+            <TouchableOpacity style={styles.button} onPress={validaLogin}>
                 <Text style={styles.title}>login</Text>
             </TouchableOpacity>
         </View>
@@ -23,7 +44,7 @@ const styles = StyleSheet.create({
     Container:{
         flex:1,
         alignItems: 'center',
-        backgroundColor: 'blue',
+        backgroundColor: 'orange',
         justifyContent: 'center'
        },
     title:{
@@ -52,6 +73,6 @@ const styles = StyleSheet.create({
         cursor:'pointer',
         
        
-    },
+    }
 })
 
